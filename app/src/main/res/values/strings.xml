@@ -1,6 +1,12 @@
 <resources>
+    <!--通用字符资源-->
+    <string name="textHolder">我是一个占位符</string>
+    <string name="textLoading">加载中&#8230;</string>
+
     <string name="app_name">Base</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--activity_drawer-->
+    <string name="activity_drawer_nav_home">应用首页</string>
+    <string name="activity_drawer_nav_setting">应用设置</string>
+
 </resources>
