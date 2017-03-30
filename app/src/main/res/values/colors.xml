@@ -1,11 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--前缀{_控件}{_范围}{_后缀}-->
+<!--背景颜色，添加bg前缀-->
+<!--文本颜色，添加text前缀-->
+<!--分割线颜色，添加div前缀-->
+<!--区分状态时，默认状态颜色，添加normal后缀-->
+<!--区分状态时，按下时颜色，添加pressed后缀-->
+<!--区分状态时，选中时颜色，添加selected后缀-->
+<!--区分状态时，不可用时颜色，添加disable后缀-->
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--theme颜色，以theme为前缀-->
+    <color name="theme_color_primary">#FF393D49</color>
+    <color name="theme_color_primary_dark">#FF393D49</color>
+    <color name="theme_color_accent">#FF009688</color>
+    <color name="theme_window_background">#FFFBFBFB</color>
+    <color name="theme_text_color_primary">#FF2F4056</color>
+    <color name="theme_text_color_hint">#FFC2C2C2</color>
+    <color name="theme_text_color_link">#FF009688</color>
 
+    <!--text颜色，以text为前缀-->
     <color name="textWhite">#FFFFFFFF</color>
-    <color name="textLevel1">#FF2F4056</color>
-    <color name="textLevel2">#FFC2C2C2</color>
+    <color name="textTitle">#FF2F4056</color>
+    <color name="textSubTitle">#FFC2C2C2</color>
 
 </resources>

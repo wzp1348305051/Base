@@ -3,13 +3,15 @@ package com.wzp.www.base.ui.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.wzp.www.base.ui.fragment.IFragmentInteractionListener;
+
 /**
  * FragmentActivity基类
  *
  * @author wzp
  * @since 2017-03-03
  */
-public abstract class BaseFragmentActivity extends BaseActivity {
+public abstract class BaseFragmentActivity extends BaseActivity implements IFragmentInteractionListener {
     protected Fragment mCurrentFragment;
 
     @Override

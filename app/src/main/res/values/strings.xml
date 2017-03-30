@@ -1,12 +1,23 @@
+<!--类型_{范围_}功能-->
+<!--页面标题：title-->
+<!--按钮文字：btn-->
+<!--标签文字：label-->
+<!--选项卡文字：tab-->
+<!--消息框文字：toast-->
+<!--提示文字：hint-->
+<!--描述文字：desc-->
+<!--对话框文字：dialog-->
+<!--菜单项文字：action-->
 <resources>
     <!--通用字符资源-->
-    <string name="textHolder">我是一个占位符</string>
-    <string name="textLoading">加载中&#8230;</string>
+    <string name="generic_holder">我是一个占位符</string>
+    <string name="generic_loading">加载中&#8230;</string>
 
+    <!--应用名称-->
     <string name="app_name">Base</string>
 
     <!--activity_drawer-->
-    <string name="activity_drawer_nav_home">应用首页</string>
-    <string name="activity_drawer_nav_setting">应用设置</string>
+    <string name="action_activity_drawer_menu_home">应用首页</string>
+    <string name="action_activity_drawer_menu_setting">应用设置</string>
 
 </resources>

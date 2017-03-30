@@ -16,7 +16,7 @@ import android.view.ViewGroup;
  */
 public class BaseFragment extends Fragment {
     private Bundle mParam;
-    private OnFragmentInteractionListener mListener;
+    private IFragmentInteractionListener mListener;
 
     public BaseFragment() {
 
@@ -42,20 +42,14 @@ public class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return null;
-    }
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof IFragmentInteractionListener) {
+            mListener = (IFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString() + " must implement " +
                     "OnFragmentInteractionListener");
@@ -66,9 +60,5 @@ public class BaseFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 }

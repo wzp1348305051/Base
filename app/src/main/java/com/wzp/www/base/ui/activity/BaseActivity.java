@@ -21,24 +21,24 @@ import com.wzp.www.base.helper.ActivityHelper;
  * @since 2017-03-03
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private AppBarLayout mAblNavTop;
-    private Toolbar mTbNavTop;
+    private AppBarLayout mAblNav;
+    private Toolbar mTbNav;
     private ActionBar mActionBar;
-    private INavTopBackListener mNavTopBackListener;
-    private int mNavTopMenu;
+    private INavBackListener mNavBackListener;
+    private int mNavMenu;
 
-    public interface INavTopBackListener {
+    public interface INavBackListener {
         void onBack();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(bindContentView());
-        initNavTop();
-        initContentViewItem();
+        setContentView(getContentView());
+        initNav();
+        initContentView();
         loadData();
-        bindContentViewItem(savedInstanceState);
+        bindContentView(savedInstanceState);
         ActivityHelper.add(this);
     }
 
@@ -51,11 +51,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化顶部导航栏
      */
-    protected void initNavTop() {
-        mAblNavTop = (AppBarLayout) findViewById(R.id.abl_nav_top);
-        mTbNavTop = (Toolbar) findViewById(R.id.tb_nav_top);
-        if (mTbNavTop != null) {
-            setSupportActionBar(mTbNavTop);
+    protected void initNav() {
+        mAblNav = (AppBarLayout) findViewById(R.id.abl_generic_nav);
+        mTbNav = (Toolbar) findViewById(R.id.tb_generic_nav);
+        if (mTbNav != null) {
+            setSupportActionBar(mTbNav);
         }
         mActionBar = getSupportActionBar();
     }
@@ -63,18 +63,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 隐藏顶部导航栏
      */
-    protected void hideNavTop() {
-        if (mAblNavTop != null) {
-            mAblNavTop.setVisibility(View.GONE);
+    protected void hideNav() {
+        if (mAblNav != null) {
+            mAblNav.setVisibility(View.GONE);
         }
     }
 
     /**
      * 显示顶部导航栏
      */
-    protected void showNavTop() {
-        if (mAblNavTop != null) {
-            mAblNavTop.setVisibility(View.VISIBLE);
+    protected void showNav() {
+        if (mAblNav != null) {
+            mAblNav.setVisibility(View.VISIBLE);
         }
     }
 
@@ -84,14 +84,14 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param resId    自定义返回键资源ID
      * @param listener 自定义返回键操作
      */
-    protected void setNavTopBack(int resId, INavTopBackListener listener) {
+    protected void setNavBack(int resId, INavBackListener listener) {
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
             if (resId != 0) {
                 mActionBar.setHomeAsUpIndicator(resId);
             }
             if (listener != null) {
-                mNavTopBackListener = listener;
+                mNavBackListener = listener;
             }
         }
     }
@@ -99,8 +99,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 设置顶部导航栏返回键
      */
-    protected void setNavTopBack() {
-        setNavTopBack(0, null);
+    protected void setNavBack() {
+        setNavBack(0, null);
     }
 
     /**
@@ -108,14 +108,14 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param listener 自定义返回键操作
      */
-    protected void setNavTopBack(INavTopBackListener listener) {
-        setNavTopBack(0, listener);
+    protected void setNavBack(INavBackListener listener) {
+        setNavBack(0, listener);
     }
 
     /**
      * 设置顶部导航栏标题
      */
-    protected void setNavTopTitle(int resId) {
+    protected void setNavTitle(int resId) {
         if (mActionBar != null && resId != 0) {
             mActionBar.setTitle(resId);
         }
@@ -124,7 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 设置顶部导航栏标题
      */
-    protected void setNavTopTitle(String title) {
+    protected void setNavTitle(String title) {
         if (mActionBar != null && !TextUtils.isEmpty(title)) {
             mActionBar.setTitle(title);
         }
@@ -133,16 +133,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 绑定顶部导航栏菜单
      */
-    protected void bindNavTopMenu(int resId) {
+    protected void bindNavMenu(int resId) {
         if (resId != 0) {
-            mNavTopMenu = resId;
+            mNavMenu = resId;
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (mNavTopMenu != 0) {
-            getMenuInflater().inflate(mNavTopMenu, menu);
+        if (mNavMenu != 0) {
+            getMenuInflater().inflate(mNavMenu, menu);
             return true;
         } else {
             return super.onCreateOptionsMenu(menu);
@@ -153,8 +153,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (mNavTopBackListener != null) {
-                    mNavTopBackListener.onBack();
+                if (mNavBackListener != null) {
+                    mNavBackListener.onBack();
                 } else {
                     finish();
                 }
@@ -164,16 +164,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 获取根布局
+     * 获取活动对应布局ID
      */
-    protected ViewGroup getRootView() {
-        return (ViewGroup) getWindow().getDecorView();
-    }
-
-    /**
-     * 绑定活动对应布局ID
-     */
-    protected abstract int bindContentView();
+    protected abstract int getContentView();
 
     /**
      * 加载数据
@@ -183,11 +176,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化布局元素
      */
-    protected abstract void initContentViewItem();
+    protected abstract void initContentView();
 
     /**
      * 绑定布局元素
      */
-    protected abstract void bindContentViewItem(Bundle savedInstanceState);
+    protected abstract void bindContentView(Bundle savedInstanceState);
 
 }

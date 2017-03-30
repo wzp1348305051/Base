@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textLarge">18sp</dimen>
-    <dimen name="textMiddle">16sp</dimen>
-    <dimen name="textSmall">14sp</dimen>
-    <dimen name="textTiny">12sp</dimen>
 
-    <dimen name="paddingLarge">20dp</dimen>
-    <dimen name="paddingMiddle">16dp</dimen>
-    <dimen name="paddingSmall">12dp</dimen>
-    <dimen name="paddingTiny">6dp</dimen>
+    <!--text尺寸，以text为前缀-->
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_middle">16sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_tiny">12sp</dimen>
 
-    <dimen name="marginLarge">20dp</dimen>
-    <dimen name="marginMiddle">16dp</dimen>
-    <dimen name="marginSmall">12dp</dimen>
-    <dimen name="marginTiny">6dp</dimen>
+    <!--padding尺寸，以padding为前缀-->
+    <dimen name="padding_large">20dp</dimen>
+    <dimen name="padding_middle">16dp</dimen>
+    <dimen name="padding_small">12dp</dimen>
+    <dimen name="padding_tiny">6dp</dimen>
+
+    <!--margin尺寸，以margin为前缀-->
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_middle">16dp</dimen>
+    <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_tiny">6dp</dimen>
 
 </resources>

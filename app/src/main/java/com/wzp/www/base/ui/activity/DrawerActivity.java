@@ -12,24 +12,24 @@ import com.wzp.www.base.R;
  * 侧边导航菜单活动
  */
 public class DrawerActivity extends BaseFragmentActivity {
-    protected DrawerLayout mDlMain;
+    protected DrawerLayout mDlRoot;
     protected NavigationView mNvMenu;
 
     @Override
-    protected int bindContentView() {
+    protected int getContentView() {
         return R.layout.activity_drawer;
     }
 
     @Override
-    protected void initNavTop() {
-        super.initNavTop();
-        setNavTopBack(R.drawable.activity_drawer_nav_menu, new INavTopBackListener() {
+    protected void initNav() {
+        super.initNav();
+        setNavBack(R.drawable.ic_activity_drawer_menu, new INavBackListener() {
             @Override
             public void onBack() {
-                mDlMain.openDrawer(GravityCompat.START);
+                mDlRoot.openDrawer(GravityCompat.START);
             }
         });
-        setNavTopTitle(R.string.activity_drawer_nav_home);
+        setNavTitle(R.string.action_activity_drawer_menu_home);
     }
 
     @Override
@@ -38,14 +38,14 @@ public class DrawerActivity extends BaseFragmentActivity {
     }
 
     @Override
-    protected void initContentViewItem() {
-        mDlMain = (DrawerLayout) findViewById(R.id.dl_drawer);
-        mNvMenu = (NavigationView) findViewById(R.id.nv_drawer_nav_menu);
+    protected void initContentView() {
+        mDlRoot = (DrawerLayout) findViewById(R.id.dl_activity_drawer_root);
+        mNvMenu = (NavigationView) findViewById(R.id.nv_activity_drawer_menu);
     }
 
     @Override
-    protected void bindContentViewItem(Bundle savedInstanceState) {
-        mNvMenu.setCheckedItem(R.id.activity_drawer_nav_home);
+    protected void bindContentView(Bundle savedInstanceState) {
+        mNvMenu.setCheckedItem(R.id.activity_drawer_menu_home);
         mNvMenu.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
             @Override
@@ -54,9 +54,14 @@ public class DrawerActivity extends BaseFragmentActivity {
                     default:
                         break;
                 }
-                mDlMain.closeDrawers();
+                mDlRoot.closeDrawers();
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onFragmentInteraction(Bundle data) {
+
     }
 }

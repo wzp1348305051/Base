@@ -1,11 +1,25 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="app_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--去除窗体ActionBar-->
+        <item name="windowActionBar">false</item>
+        <!--去除窗体标题-->
+        <item name="windowNoTitle">true</item>
+        <!--导航栏颜色-->
+        <item name="colorPrimary">@color/theme_color_primary</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/theme_color_primary_dark</item>
+        <!--控件选中后颜色-->
+        <item name="colorAccent">@color/theme_color_accent</item>
+        <!--窗体背景色-->
+        <item name="android:windowBackground">@color/theme_window_background</item>
+        <!--文字主体色-->
+        <item name="android:textColorPrimary">@color/theme_text_color_primary</item>
+        <!--文字提示色-->
+        <item name="android:textColorHint">@color/theme_text_color_hint</item>
+        <!--文字链接色-->
+        <item name="android:textColorLink">@color/theme_text_color_link</item>
     </style>
 
 </resources>

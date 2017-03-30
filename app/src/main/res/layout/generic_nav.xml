@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--控件说明参考地址：http://blog.csdn.net/huachao1001/article/details/51558835-->
+<!--用于实现内部子View随某个滚动控件滚动时效果，通过设置app:layout_scrollFlags实现-->
+<android.support.design.widget.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/abl_generic_nav"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <!--用于实现折叠Toolbar效果，通过设置app:layout_collapseMode实现-->
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/ctl_generic_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_generic_nav"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+</android.support.design.widget.AppBarLayout>
