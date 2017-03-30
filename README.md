@@ -1,6 +1,8 @@
 # Base
 Base Android Project
 
+命名规范：http://keeganlee.me/post/android/20150709
+
 网络框架：OkHttp
 https://github.com/square/okhttp
 https://github.com/franmontiel/PersistentCookieJar
