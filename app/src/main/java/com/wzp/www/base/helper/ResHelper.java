@@ -18,12 +18,12 @@ import java.io.InputStream;
  * @author wzp
  * @since 2017-02-28
  */
-public class ResourceHelper {
-    private static final String TAG = ResourceHelper.class.getSimpleName();
+public class ResHelper {
+    private static final String TAG = ResHelper.class.getSimpleName();
     private static final Context CONTEXT = Global.APP_CONTEXT;
     private static final Resources RESOURCES = CONTEXT.getResources();
 
-    private ResourceHelper() {
+    private ResHelper() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 

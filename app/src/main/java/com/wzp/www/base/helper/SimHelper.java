@@ -25,7 +25,7 @@ public class SimHelper {
 
     private SimHelper() {
         sContext = Global.APP_CONTEXT;
-        sTelephonyManager = SystemServiceHelper.getTelephonyManager(sContext);
+        sTelephonyManager = SysSrvHelper.getTelephonyManager(sContext);
     }
 
     public static SimHelper getInstance() {

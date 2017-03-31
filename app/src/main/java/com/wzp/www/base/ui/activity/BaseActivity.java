@@ -9,10 +9,15 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.wzp.www.base.R;
+import com.wzp.www.base.bean.NavMenu;
 import com.wzp.www.base.helper.ActivityHelper;
+import com.wzp.www.base.helper.L;
+import com.wzp.www.base.helper.ResHelper;
+
+import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Activity基类
@@ -21,11 +26,13 @@ import com.wzp.www.base.helper.ActivityHelper;
  * @since 2017-03-03
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    private static final String TAG = BaseActivity.class.getSimpleName();
     private AppBarLayout mAblNav;
     private Toolbar mTbNav;
     private ActionBar mActionBar;
     private INavBackListener mNavBackListener;
-    private int mNavMenu;
+    private int mNavMenuResId;
+    private String mNavMenuJsonStr;
 
     public interface INavBackListener {
         void onBack();
@@ -131,22 +138,65 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 绑定顶部导航栏菜单
+     * 从JSON字符串加载顶部导航栏菜单，优先级高于从资源文件加载顶部导航栏菜单，json格式如下
+     * <pre>
+     * [
+     *     {
+     *         "groupId": 0,
+     *         "itemId": 0,
+     *         "orderId": 0,
+     *         "title": "",
+     *         "icon": "drawable资源名"
+     *     }
+     * ]
+     * </pre>
      */
-    protected void bindNavMenu(int resId) {
-        if (resId != 0) {
-            mNavMenu = resId;
+    protected void loadNavMenu(String navMenuJsonStr) {
+        mNavMenuJsonStr = navMenuJsonStr;
+    }
+
+    /**
+     * 从资源文件加载顶部导航栏菜单
+     */
+    protected void loadNavMenu(int navMenuResId) {
+        mNavMenuResId = navMenuResId;
+    }
+
+    /**
+     * 反射方式解决Android4.0中menu中android:icon不起作用
+     */
+    private void setMenuIconEnable(Menu menu, boolean enable) {
+        try {
+            Class<?> clazz = Class.forName("com.android.internal.view.menu.MenuBuilder");
+            Method method = clazz.getDeclaredMethod("setOptionalIconsVisible", boolean
+                    .class);
+            method.setAccessible(true);
+            method.invoke(menu, enable);
+        } catch (Exception e) {
+            L.e(TAG, e.getMessage());
         }
     }
 
+    /**
+     * @return true(显示菜单)
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (mNavMenu != 0) {
-            getMenuInflater().inflate(mNavMenu, menu);
-            return true;
-        } else {
-            return super.onCreateOptionsMenu(menu);
+        super.onCreateOptionsMenu(menu);
+        setMenuIconEnable(menu, true);
+        if (!TextUtils.isEmpty(mNavMenuJsonStr)) {
+            List<NavMenu> navMenus = NavMenu.getNavMenus(mNavMenuJsonStr);
+            for (NavMenu navMenu : navMenus) {
+                MenuItem menuItem = menu.add(navMenu.mGroupId, navMenu.mItemId, navMenu
+                        .mOrderId, navMenu.mTitle);
+                if (!TextUtils.isEmpty(navMenu.mIcon)) {
+                    menuItem.setIcon(ResHelper.getDrawable(navMenu.mIcon));
+                }
+            }
+        } else if (mNavMenuResId != 0) {
+            getMenuInflater().inflate(mNavMenuResId, menu);
         }
+        return true;
     }
 
     @Override

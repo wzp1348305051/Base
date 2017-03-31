@@ -138,7 +138,7 @@ public final class L {
      */
     private static void persist(String tag, String msg) {
         if (isSaveToDb) {
-            saveToDb(tag, msg);
+            saveToDb(tag, Thread.currentThread().getStackTrace()[2].getMethodName(), msg);
         }
         if (isSaveToServer) {
             saveToServer(tag, msg);
@@ -148,8 +148,8 @@ public final class L {
     /**
      * 保存日志至数据库
      */
-    private static void saveToDb(String tag, String msg) {
-        // TODO 保存至数据库逻辑
+    private static void saveToDb(String tag, String source, String msg) {
+        DbHelper.getInstance().addLog(tag, source, msg);
     }
 
     /**

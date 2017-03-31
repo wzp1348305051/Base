@@ -55,8 +55,8 @@ public class GlideHelper {
             (Global.APP_CONTEXT, LRU_BITMAP_POOL);
 
     public static DrawableRequestBuilder configDefault(DrawableTypeRequest request) {
-        return request.placeholder(R.drawable.ic_loading_default)// 默认占位图片
-                .error(R.drawable.ic_loading_default)// 默认失败图片
+        return request.placeholder(R.drawable.ic_generic_default)// 默认占位图片
+                .error(R.drawable.ic_generic_error)// 默认失败图片
                 .thumbnail(0.2f)// 先加载一定比例缩略图
                 .animate(android.R.anim.fade_in)// 图片加载完成后动画效果
                 .centerCrop()// 图片填充模式

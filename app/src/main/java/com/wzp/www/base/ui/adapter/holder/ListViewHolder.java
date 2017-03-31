@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.wzp.www.base.helper.GlideHelper;
 import com.wzp.www.base.helper.L;
-import com.wzp.www.base.helper.SystemServiceHelper;
+import com.wzp.www.base.helper.SysSrvHelper;
 
 import java.io.File;
 
@@ -44,7 +44,7 @@ public class ListViewHolder {
         mActivity = activity;
         mFragment = fragment;
         mPosition = position;
-        mRootView = SystemServiceHelper.getLayoutInflater(mActivity).inflate(layoutId,
+        mRootView = SysSrvHelper.getLayoutInflater(mActivity).inflate(layoutId,
                 parent, false);
         mRootView.setTag(this);
     }

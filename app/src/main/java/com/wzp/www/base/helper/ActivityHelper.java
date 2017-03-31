@@ -269,7 +269,7 @@ public class ActivityHelper {
      */
     public static boolean isSilentMode(Context context) {
         if (context != null) {
-            int ringerMode = SystemServiceHelper.getAudioManager(context)
+            int ringerMode = SysSrvHelper.getAudioManager(context)
                     .getRingerMode();
             return ((AudioManager.RINGER_MODE_SILENT == ringerMode) || (AudioManager
                     .RINGER_MODE_VIBRATE == ringerMode));

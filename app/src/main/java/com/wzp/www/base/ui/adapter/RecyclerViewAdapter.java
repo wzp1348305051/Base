@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.wzp.www.base.helper.SystemServiceHelper;
+import com.wzp.www.base.helper.SysSrvHelper;
 import com.wzp.www.base.ui.adapter.holder.RecyclerViewHolder;
 
 import java.util.ArrayList;
@@ -211,7 +211,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
      */
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return RecyclerViewHolder.getViewHolder(SystemServiceHelper.getLayoutInflater
+        return RecyclerViewHolder.getViewHolder(SysSrvHelper.getLayoutInflater
                 (mActivity).inflate(mItemLayoutId, parent, false), mActivity, mFragment);
     }
 

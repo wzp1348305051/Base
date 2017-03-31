@@ -28,9 +28,9 @@ import android.view.inputmethod.InputMethodManager;
  * @author wzp
  * @since 2016-01-26
  */
-public class SystemServiceHelper {
+public class SysSrvHelper {
 
-    private SystemServiceHelper() {
+    private SysSrvHelper() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
